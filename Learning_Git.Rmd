@@ -2,10 +2,14 @@
 title: "Learning Git"
 author: "Ada Hagan"
 date: "January 9, 2019"
-output: html_document
+output: 
+  html_document: default
+  github_document:
+    html_preview: false
 ---
 
-#General Notes to Self:
+## General Notes to Self:
+
 - Slow down
 - Always have learners tell you the commands you should use (or what the next step might be) -- use the etherpad to help gauge how comfortable the students are with a command
 - Always write/draw commands if I don't type them
@@ -17,8 +21,9 @@ output: html_document
 - try to hide responses on the etherpad until everyone has answered
 
 
-#Setup
-- start with a fresh planets repo
+## Setup
+
+- Start with a fresh planets repo
 - Spend first 5 minutes allowing learners to pull up/create github accounts & open their command line.
 - Link to SWC Git notes: https://swcarpentry.github.io/git-novice/
 - Put the following list of commands in the etherpad -- learners add a "+" when they're tired of hearing them 50% means I quit making them tell me
@@ -33,7 +38,8 @@ output: html_document
     + git commit -m "message"
     + git status
 
-#Outline
+## Outline
+
 - What is Git?
 - How to make your filebox (setup & init)
 - How to add snapshots to your filebox (add, commit)
@@ -44,7 +50,7 @@ output: html_document
 - How to collaborate with others (clone)
 - How to resolve collaborative conflicts (merge, branch)
 
-#What is Git?
+## What is Git?
 
 **It's very important that the learners fully understand this concept!! If they don't, the rest doesn't matter.**
 
@@ -62,12 +68,13 @@ What we're going to spend the rest of our time this morning/afternoon doing, is 
 
 On a command line, Git commands are written as `git verb options`, where we tell the computer that we want to use the `git` program, and perform the `verb` action, which might be modified using `options`.
 
-#How to make your filebox (setup & init)
+## How to make your filebox (setup & init)
 
 When we use Git on a new computer for the first time, we need to configure a few things:
   + our name and email address,
   + what our preferred text editor is,
   + and that we want to use these settings globally (i.e. for every project).
+  
 ```
 $ git config --global user.name "Vlad Dracula"
 $ git config --global user.email "vlad@tran.sylvan.ia"
@@ -94,6 +101,7 @@ nano 	`$ git config --global core.editor "nano -w"`
 Remember that if you mess up any of the `git config` options, you can change them by entering the same command with corrected/different options
 
 Always remember that if you forget a `git` command, you can access the list of commands by using `-h` and access the Git manual by using `--help`:
+
 ```
 $ git config -h
 $ git config --help
@@ -122,7 +130,7 @@ Create a filebox for the project that you started in your Unix Shell lesson (`da
 
 ----
 
-#How to add snapshots to your filebox (add, commit)
+## How to add snapshots to your filebox (add, commit)
 
 1. Navigate back to `planets/`
 
@@ -172,7 +180,7 @@ Take a snapshot and put it in your filebox.
 
 ----
 
-#How to track changes between versions (diff, log)
+## How to track changes between versions (diff, log)
 
 1. We can view all of our previous commits using the command `git log`. What info has this given me?
 
@@ -211,7 +219,7 @@ Consider this command: `git diff [ID] mars.txt`, where [ID] is replaced with the
 
 Update your Git notes text file. Commit the updated file and view the changes using `git diff`, `git diff --staged` and `git log` at the appropriate steps. Which do you prefer? Why?
 
-#How to restore a previous version (checkout)
+## How to restore a previous version (checkout)
 
 **Summarize:** 
 
@@ -225,7 +233,7 @@ At this point we've learned:
   
 Now let's learn how to restore previous versions of a file using the command `git checkout`.
 
-There are two different ways to reference previous file versions in git. The barcode that I've been pointing out to you and "HEAD". The barcode is specific to each commit, while head is a generic term that allows you to work with recent commits w/o digging out the barcode. 
+There are two different ways to reference previous file versions in git: the barcode that I've been pointing out to you and "HEAD". The barcode is specific to each commit, while head is a generic term that allows you to work with recent commits w/o digging out the barcode. 
 
 The most recent commit is termed the "HEAD", and each previous commit is head tilda some number, e.g., HEAD~1, HEAD~2, HEAD~3, etc.
 
@@ -278,13 +286,13 @@ Restore the previous version of Git notes.
 
 ----
 
-#How to choose what to track & what not to track (.gitignore)
+## How to choose what to track & what not to track (.gitignore)
 
 **- Adding to the puzzle analogy**
 
 So going back to our puzzle analogy, are there important piece to your project that you don't want to take snapshots of? Maybe because they don't change or if they do, then the changes aren't helpful to track? Consider the box you store pieces in? Or the pieces that are still unmatched at the end of a puzzle session? Or the puzzle playlist that you always use. Or the table you work on?
 
-Because you're physically holding the camera, you get to choose what makes sense to track & what doesn't. But git doesn't know that on it's own. You have specifically tell git what you DO NOT want snapshots of.
+Because you're physically holding the camera, you get to choose what makes sense to track & what doesn't. But git doesn't know that on it's own. You have to specifically tell git what you DO NOT want snapshots of.
 
 Sometimes you're going to have important files that you don't want to track changes on, either they're too big, they don't change (e.g., data files) or their changes aren't recorded by git (e.g., word files). 
 
@@ -320,7 +328,7 @@ How would you ignore only `results/plots` and not `results/data`?
 
 ----
 
-1. Can view ignored files with `git status --ignored`
+1. You can view ignored files with `git status --ignored`
 
 1. Override `.gitignore` using `git add -f ____`
 
@@ -344,7 +352,7 @@ You wrote a script that creates many intermediate log-files of the form `log_01`
 
 Create a `.gitignore` file for the `data-shell/` directory. Tell it to ignore `.pdb`, `.xml`, and `.dat` files. `Add` and `commit` the contents of `data-shell/`. What files/directories don't get committed? Why not?
 
-#How to share your filebox with others (github, pull, push)
+## How to share your filebox with others (github, pull, push)
 
 **Extending the puzzle analogy:** What if you're really proud of this puzzle, or you want a backup of your filebox (since it's only as safe as your house is...)? Well, you could scan those polaroids into your computer then upload them to a website (e.g., mypuzzles.com), where each puzzle has it's own webpage that contains the scanned versions of your snapshots that anybody can view! This "website" is github.
 
@@ -392,7 +400,7 @@ Set up and push your `data-shell/` repository to your github account. Explore th
 
 ----
 
-#How to collaborate with others (clone)
+## How to collaborate with others (clone)
 
 **Extending the puzzle analogy again:** What if you have a best friend across the country and you're both going to work on the puzzle together. So your friend buys a copy of the same puzzle to set up in their dining room. How do you work together on it and share the progress? Through your puzzles.com!
 
@@ -452,7 +460,7 @@ Switch roles and repeat the whole process.
 
 ----
 
-#How to resolve collaborative conflicts (merge, branch)
+## How to resolve collaborative conflicts (merge, branch)
 
 As soon as people can work in parallel, they’ll likely step on each other’s toes. This will even happen with a single person: if we are working on a piece of software on both our laptop and a server in the lab, we could make different changes to each copy. Version control helps us manage these conflicts by giving us tools to resolve overlapping changes.
 
@@ -539,9 +547,10 @@ order 	action . . . . . . . . . . 	command . . . . . . . . . .
 
 Clone the repository created by your instructor. Add a new file to it, and modify an existing file (your instructor will tell you which one). When asked by your instructor, pull her changes from the repository to create a conflict, then resolve it.
 
-#What else do you need to know?
+## What else do you need to know?
 
 There are a few other sections on Git & GitHub that we aren't going to go indepth on, but you might be interested in reading:
+
   + Open Science
   + Licensing
   + Citations
